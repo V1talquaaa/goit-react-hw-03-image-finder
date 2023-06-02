@@ -1,6 +1,8 @@
 import { Component } from "react";
 import css from './Searchbar.module.css'
-import searchIcon from 'search.svg'
+// import { GoSearch } from 'react-icons/fa';
+import {ReactComponent as MyIcon} from './search.svg'
+
 
 
 class Searchbar extends Component {
@@ -25,15 +27,15 @@ handleSubmit = (e) => {
         return (
           <header className={css.Searchbar}>
             <form className={css.SearchForm} onSubmit={this.handleSubmit}>
-            <button type="submit" className={css.SearchFormButton} >
-              <span className={css.SearchFormButtonLabel}>{searchIcon}</span>
+            <button type="submit" className={css.SearchFormButton} ><MyIcon/>
+              {/* <span className={css.SearchFormButtonLabel}></span> */}
             </button>
         
             <input
               className={css.SearchFormInput}
               type="text"
-              autocomplete="off"
-              autofocus
+              autoComplete="off"
+              autoFocus
               placeholder="Search images and photos"
               onChange={this.handleQuery}
               value={this.state.query}
