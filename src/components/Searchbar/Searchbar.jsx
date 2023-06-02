@@ -1,6 +1,5 @@
 import { Component } from "react";
 import css from './Searchbar.module.css'
-// import { GoSearch } from 'react-icons/fa';
 import {ReactComponent as MyIcon} from './search.svg'
 
 
@@ -28,7 +27,6 @@ handleSubmit = (e) => {
           <header className={css.Searchbar}>
             <form className={css.SearchForm} onSubmit={this.handleSubmit}>
             <button type="submit" className={css.SearchFormButton} ><MyIcon/>
-              {/* <span className={css.SearchFormButtonLabel}></span> */}
             </button>
         
             <input
