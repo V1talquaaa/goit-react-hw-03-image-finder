@@ -5,7 +5,7 @@ import { getImages } from 'Services/getNews';
 import { Circles } from 'react-loader-spinner';
 import { Button } from './Button/Button';
 import { Modal } from './Modal/Modal';
-import './styles.module.css'
+import css from'./styles.module.css'
 import Notiflix from 'notiflix';
 
 
@@ -70,15 +70,15 @@ export class App extends Component {
         <Searchbar onSubmit={this.onSubmit} />
         <ImageGallery images={this.state.images} openModal={this.openModal} />
         {this.state.visible &&
-        <Circles
-          height="80"
-          width="80"
-          color="#3f51b5"
-          ariaLabel="circles-loading"
-          wrapperStyle={{}}
-          wrapperClass="wrapper"
-          visible={this.state.visible}
-        />}
+            <Circles
+            height="80"
+            width="80"
+            color="#3f51b5"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass={css.wrapper}
+            visible={this.state.visible}
+          />}
         {this.state.isHiden? '' : <Button loadMoreImages={this.loadMoreImages}/>}
         {this.state.isShowModal && (
         <Modal image={this.state.selectedImage} closeModal={this.closeModal}/>)}

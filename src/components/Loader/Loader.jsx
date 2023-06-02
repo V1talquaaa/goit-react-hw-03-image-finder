@@ -1,7 +1,6 @@
 // import { Circles } from 'react-loader-spinner';
 
-// const Loader = () => {
-//     return (
+// const Loader = (visible) => {
 //     <Circles
 //           height="80"
 //           width="80"
@@ -9,9 +8,9 @@
 //           ariaLabel="circles-loading"
 //           wrapperStyle={{}}
 //           wrapperClass="wrapper"
-//           visible={this.state.visible}
+//           visible={visible}
 //         />
-//     )
+    
 // }
 
 // export {Loader}
