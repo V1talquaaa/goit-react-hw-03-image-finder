@@ -21,16 +21,17 @@ export class App extends Component {
   };
 
   componentDidUpdate(_, prevState) {
-    if (prevState.query !== this.state.query && this.state.query !== '') {
-      this.setState({visible: true, page: 2, isHiden: false})
+    if (prevState.query !== this.state.query && this.state.query !== '' || prevState.page !== this.state.page) {
+      this.setState({visible: true, isHiden: false})
       getImages(this.state.query, this.state.page) 
-        .then(response => response.json())
-        .then(images => {
+      .then(images => {
           if(images.hits.length <= 0) {
-            this.setState({isHiden: true, visible: false})
             Notiflix.Notify.failure('Nothing was found :(')
           }
-          this.setState({ images: images.hits })})
+          if(images.hits.length < 12 ) {
+            this.setState({isHiden: true})
+          }
+          this.setState(prevState => ({images: [...prevState.images, ...images.hits]}))})
         .finally(() => {
           this.setState({visible: false})
         })
@@ -38,23 +39,13 @@ export class App extends Component {
   }
 
   onSubmit = (query) => {
-    this.setState({query: query, page: 1});
+    this.setState({query: query, page: 1, images: []});
   };
 
   loadMoreImages = () => {
-    getImages(this.state.query, this.state.page)
-      .then(response => response.json())
-      .then(images => {
-        this.setState(prevState => ({
-          images: [...prevState.images, ...images.hits],
-          page: prevState.page + 1
-        }));
-        if(images.hits.length < 12) {
-          this.setState({isHiden: true})
-          Notiflix.Notify.warning('Oops, you have reached to the end')
-        }
-      });
-  }
+        this.setState(prevState => ({page: prevState.page + 1}))
+    }
+      
 
   openModal = (image) => {
     this.setState({ selectedImage: image, isShowModal: true });

@@ -3,7 +3,14 @@ import css from './ImageGallery.module.css'
 
 const ImageGallery = ({ images, openModal }) => {
   return <ul className={css.ImageGallery}>
-      <ImageGalleryItem images={images} openModal={openModal}/>
+    {images.map(({id, webformatURL, largeImageURL }) => {
+      return (
+            <ImageGalleryItem key={id}
+            webformatURL={webformatURL}
+            largeImageURL={largeImageURL}
+            openModal={openModal}/>
+            )
+    })}
     </ul>
 };
 
