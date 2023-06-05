@@ -19,7 +19,6 @@ class Modal extends Component {
     closeModal = (e) => {
       if(e.target === e.currentTarget) {
         this.props.closeModal();
-        console.log(this.props.image)
       }
       
     };

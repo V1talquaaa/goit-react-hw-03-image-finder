@@ -21,7 +21,7 @@ export class App extends Component {
   };
 
   componentDidUpdate(_, prevState) {
-    if (prevState.query !== this.state.query && this.state.query !== '' || prevState.page !== this.state.page) {
+    if (prevState.query !== this.state.query || prevState.page !== this.state.page) {
       this.setState({visible: true, isHiden: false})
       getImages(this.state.query, this.state.page) 
       .then(images => {
