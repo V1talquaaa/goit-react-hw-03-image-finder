@@ -1,4 +1,5 @@
 import css from './Button.module.css'
+import PropTypes from 'prop-types';
 
 const Button = ({loadMoreImages}) => {
 
@@ -7,4 +8,7 @@ const Button = ({loadMoreImages}) => {
     )
 }
 
+Button.propTypes = {
+    loadMoreImages: PropTypes.func.isRequired,
+}
 export {Button}
